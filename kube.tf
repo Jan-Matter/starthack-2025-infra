@@ -118,6 +118,7 @@ module "kube-hetzner" {
   # Multi-architecture clusters are OK for most use cases, as container underlying images tend to be multi-architecture too.
 
   # * Example below:
+ 
 
   control_plane_nodepools = [
     {
