@@ -1,0 +1,13 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: full-access-test-robin
+  namespace: starthack-test
+subjects:
+- kind: User
+  name: robin   # Match the CN in the user certificate
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: full-access
+  apiGroup: rbac.authorization.k8s.io

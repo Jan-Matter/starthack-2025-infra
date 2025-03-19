@@ -40,3 +40,4 @@ plans-custom.yaml
 kustomization.yaml
 *kustomization_backup.yaml
 .terraform.lock.hcl
+.secrets

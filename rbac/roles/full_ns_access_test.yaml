@@ -1,0 +1,9 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: starthack-test
+  name: full-access
+rules:
+- apiGroups: [""]  # Core API group
+  resources: ["*"] # All resources (e.g., pods, services, etc.)
+  verbs: ["*"]     # All actions (create, delete, list, watch, etc.)
