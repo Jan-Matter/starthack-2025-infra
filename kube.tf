@@ -141,9 +141,7 @@ module "kube-hetzner" {
       name        = "agent-small",
       server_type = "cx22",
       location    = "nbg1",
-      labels      = {
-        "node-type" = "agent"
-      },
+      labels      = [],
       taints      = [],
       count       = 1
       # swap_size   = "2G" # remember to add the suffix, examples: 512M, 1G
