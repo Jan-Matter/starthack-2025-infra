@@ -139,12 +139,12 @@ module "kube-hetzner" {
 
   agent_nodepools = [
     {
-      name        = "agent-small",
-      server_type = "cx22",
+      name        = "agent-large",
+      server_type = "cx32",
       location    = "nbg1",
       labels      = [],
       taints      = [],
-      count       = 1
+      count       = 2
       # swap_size   = "2G" # remember to add the suffix, examples: 512M, 1G
       # zram_size   = "2G" # remember to add the suffix, examples: 512M, 1G
       # kubelet_args = ["kube-reserved=cpu=50m,memory=300Mi,ephemeral-storage=1Gi", "system-reserved=cpu=250m,memory=300Mi"]
@@ -156,6 +156,7 @@ module "kube-hetzner" {
       # backups = true
     }
   ]
+  
   # Add custom control plane configuration options here.
   # E.g to enable monitoring for etcd, proxy etc:
   # control_planes_custom_config = {
