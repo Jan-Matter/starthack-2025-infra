@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: starthack-test
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/Jan-Matter/starthack-2025-deployment
+    path: helmcharts/starthack-chart
+    targetRevision: release
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: starthack-test
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

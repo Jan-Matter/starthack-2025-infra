@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: argocd-ingress
+  namespace: argocd
+  annotations:
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"     # Specifies to use HTTP to communicate with the backend
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"         # Redirects all HTTP requests to HTTPS at the Ingress level
+    cert-manager.io/cluster-issuer: letsencrypt-prod 
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - argocd.dataplumbers.ch
+    secretName: argocd-tls                                   # TLS secret for HTTPS termination
+  rules:
+  - host: argocd.dataplumbers.ch
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: argocd-server                               # Name of the Argo CD service
+            port:
+              number: 80                                      # Port of the Argo CD server (plain HTTP)
